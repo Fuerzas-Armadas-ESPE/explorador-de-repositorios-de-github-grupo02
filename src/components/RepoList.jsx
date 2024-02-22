@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { Card } from "@mui/material";
+import { Slide } from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 
 const RepoList = ({ username }) => {
   const [repos, setRepos] = useState([]);
@@ -44,17 +46,25 @@ const RepoList = ({ username }) => {
   return (
     <div>
       <h2>Top 5 repositorios con más participación de {username}</h2>
-      <select onChange={handleFilterChange}> // Selector para cambiar el filtro
-        <option value="none">Ningún filtro</option> // Agregar la opción de 'Ningún filtro'
-        <option value="stars">Estrellas</option>
-        <option value="created">Fecha de creación</option>
-        <option value="language">Idioma predominante</option>
-      </select>
+      <Select value={filter} onChange={handleFilterChange}>
+        <MenuItem value="none">Ningún filtro</MenuItem>
+        <MenuItem value="stars">Estrellas</MenuItem>
+        <MenuItem value="created">Fecha de creación</MenuItem>
+        <MenuItem value="language">Idioma predominante</MenuItem>
+      </Select>
       <ul>
         {repos.map((repo) => (
-          <li key={repo.id}>
-            {repo.name} - Tamaño: {repo.size} - Estrellas: {repo.stargazers_count} - Lenguaje: {repo.language} - Fecha de creación: {repo.created_at}
-          </li>
+          <Slide direction="up" in={true} mountOnEnter unmountOnExit>
+          <Card key={repo.id} sx={{ marginBottom: "10px" }}>
+            <CardContent>
+              <Typography variant="h6">{repo.name}</Typography>
+              <Typography color="text.secondary">Tamaño: {repo.size}</Typography>
+              <Typography color="text.secondary">Estrellas: {repo.stargazers_count}</Typography>
+              <Typography color="text.secondary">Lenguaje: {repo.language}</Typography>
+              <Typography color="text.secondary">Fecha de creación: {new Date(repo.created_at).toLocaleDateString()}</Typography>
+            </CardContent>
+          </Card>
+          </Slide>
         ))}
       </ul>
     </div>
