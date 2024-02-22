@@ -53,13 +53,7 @@ const RepoList = ({ username }) => {
       <ul>
         {repos.map((repo) => (
           <li key={repo.id}>
-<<<<<<< HEAD
-            <Card>
-              {repo.name} - Tamaño: {repo.size}
-            </Card>
-=======
             {repo.name} - Tamaño: {repo.size} - Estrellas: {repo.stargazers_count} - Lenguaje: {repo.language} - Fecha de creación: {repo.created_at}
->>>>>>> c5bb497a8e1bc650b98b0c5012ca52bdb3b92137
           </li>
         ))}
       </ul>
