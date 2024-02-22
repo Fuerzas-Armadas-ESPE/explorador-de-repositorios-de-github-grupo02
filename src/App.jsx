@@ -41,8 +41,8 @@ function App() {
             fullWidth
             sx={{ marginBottom: "10px" }}
           />
-          <Button type="submit" variant="contained" fullWidth>
-            Buscar Repositorios
+          <Button type="submit" variant="contained" fullWidth aria-label="Buscar repositorios">
+              Buscar Repositorios
           </Button>
         </form>
         {showRepoList && <RepoList username={username} />}

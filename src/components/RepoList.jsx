@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { Slide } from "@mui/material";
-import { Select, MenuItem } from "@mui/material";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Slide, Select, MenuItem, Card, CardContent, Typography  } from "@mui/material";
 
 const RepoList = ({ username }) => {
   const [repos, setRepos] = useState([]);
