@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Card } from "@mui/material";
 
 const RepoList = ({ username }) => {
   const [repos, setRepos] = useState([]);
@@ -28,7 +29,9 @@ const RepoList = ({ username }) => {
       <ul>
         {repos.map((repo) => (
           <li key={repo.id}>
-            {repo.name} - Tamaño: {repo.size}
+            <Card>
+              {repo.name} - Tamaño: {repo.size}
+            </Card>
           </li>
         ))}
       </ul>
